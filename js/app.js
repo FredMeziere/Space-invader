@@ -28,6 +28,21 @@ const app = {
         // on ajoute la grille dans le div #invader
         app.invader.appendChild(gridElem);
       },
+     
+      // fonction pour la création des pixel
+      createPixel: function (pixelSize, container){
+        //on crée un div
+        const pixelElem = document.createElement('div');
+        // on lui ajoute la classe 'pixel'
+        pixelElem.classList.add('pixel');
+        // on lui ajoute la classe 'pixel--white'
+        pixelElem.classList.add('pixel--white');
+        // on défini sa taille
+        pixelElem.style.width = pixelSize + 'px';
+        pixelElem.style.height = pixelSize + 'px';
+        // on l'ajoute au container
+        container.appendChild(pixelElem);
+      },
       
      
   };
