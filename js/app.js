@@ -43,7 +43,26 @@ const app = {
         // on l'ajoute au container
         container.appendChild(pixelElem);
       },
+
+      //fonction pour la gestion des clicks sur les pixels
+
+      onPixelClick: function (event){
+       
+        // si le clic à bien eu lieu sur un élément ayant la classe 'pixel'
+        if(event.target.classList.contains('pixel')){
+          // on selectionne le pixel cliqué
+          const pixel = event.target;
+          // on supprime les classes des couleurs déjà présentes
+          app.styles.forEach(function(style){
+            pixel.classList.remove('pixel--' + style);
+          });
+          // on ajoute la classe correspondant à la couleur de dessin sélectionnée
+          //couleurs stockées au début du code dans un tableau
+          pixel.classList.add('pixel--' + app.selectedColor);
+        }
+      },
       
+     
      
   };
   
