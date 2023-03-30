@@ -8,6 +8,8 @@ const app = {
       'black',
       'yellow',
       'green',
+      'red',
+      'orange',
     ],
     createGrid: function (gridSize = 8, pixelSize = 30){
         // on crée un div pour accueillir les pixels
@@ -120,9 +122,54 @@ const app = {
           app.createGrid(gridSize, pixelSize);
         }
       },
-};
+
+      //Fonction pour la création de la palette de couleur 
+      createPalette: function (){
+        // on crée un div pour la palette
+        const paletteElem = document.createElement('div');
+        // on lui ajoute la classe 'palette'
+        paletteElem.classList.add('palette');
+       
+    
+        // Boucle forEach
+        // on crée un élèment pour chaque couleur
+        app.styles.forEach(function(style){
+          const colorElem = document.createElement('div');
+          // on lui ajoute une classe correspondant à la couleur
+          colorElem.classList.add(style);
+          // on ajoute cet élèment dans la palette
+          paletteElem.appendChild(colorElem);
+        });
+        // on ajoute la classe active à la couleur par defaurt
+        paletteElem.querySelector(`.${app.selectedColor}`).classList.add('active');
+        // on écoute le clic sur la palette
+        paletteElem.addEventListener('click', app.onSwatchClick);
+        // on ajoute la palette au DOM
+        document.body.appendChild(paletteElem);
+      },
+    
+      onSwatchClick: function (event){
+        // si event.target n'est pas la palette (c'est donc un de ses enfants)
+        if(!event.target.classList.contains('palette')){
+          // on désactive la couleur active
+          document.querySelector('.palette .active').classList.remove('active');
+          // on change la valeur de apop.selectedColor pour qu'elle vaille la couleur cliquée
+          app.selectedColor = event.target.className;
+          // on ajoute la classe active à la coulzeur cliquée
+          event.target.classList.add('active');
+        }
+      },
+    
+      init: function(){
+        app.createForm();
+        app.createPalette();
+        //app.createGridAlt();
+        app.createGrid(app.defaultGridSize, app.defaultPixelSize);
+      }
+    };
+    
+    app.init();
      
-    //app.init
-  
+
 
 
