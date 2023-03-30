@@ -96,10 +96,32 @@ const app = {
         form.addEventListener('submit', app.onFormSubmit);
       },
       
+      createInput: function (placeholder, container){
+        // on crée un input
+        const input = document.createElement('input');
+        // on défini son attribut type
+        input.type = 'number';
+        // on défini son attribut placeholder
+        input.placeholder = placeholder;
+        // on l'ajoute au container
+        container.appendChild(input);
+      },
       
+      onFormSubmit: function (event){
+        // on empêche le fonctionnement par défaut du formulaire
+        event.preventDefault();
+        // on récupère les valeurs des 2 inputs sous la forme de nombres
+        const gridSize = parseInt(event.target.querySelector('input:nth-child(1)').value, 10);
+        const pixelSize = parseInt(event.target.querySelector('input:nth-child(2)').value, 10);
+        // si les 2 variables sont ok
+        if(gridSize && pixelSize){
+          // on génère une nouvelle grille
+          //app.createGridAlt(gridSize, pixelSize);
+          app.createGrid(gridSize, pixelSize);
+        }
+      },
+};
      
-    };
-
     //app.init
   
 
