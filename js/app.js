@@ -36,7 +36,7 @@ const app = {
         app.invader.appendChild(gridElem);
       },
      
-      // fonction pour la création des pixel
+      // fonction pour la création des pixels
       createPixel: function (pixelSize, container){
        
         //on crée un div
@@ -57,7 +57,6 @@ const app = {
       },
 
       //fonction pour la gestion des clicks sur les pixels
-
       onPixelClick: function (event){
        
         // si le clic à bien eu lieu sur un élément ayant la classe 'pixel'
@@ -101,10 +100,13 @@ const app = {
       createInput: function (placeholder, container){
         // on crée un input
         const input = document.createElement('input');
+       
         // on défini son attribut type
         input.type = 'number';
+       
         // on défini son attribut placeholder
         input.placeholder = placeholder;
+        
         // on l'ajoute au container
         container.appendChild(input);
       },
@@ -112,13 +114,14 @@ const app = {
       onFormSubmit: function (event){
         // on empêche le fonctionnement par défaut du formulaire
         event.preventDefault();
+        
         // on récupère les valeurs des 2 inputs sous la forme de nombres
         const gridSize = parseInt(event.target.querySelector('input:nth-child(1)').value, 10);
         const pixelSize = parseInt(event.target.querySelector('input:nth-child(2)').value, 10);
+        
         // si les 2 variables sont ok
         if(gridSize && pixelSize){
           // on génère une nouvelle grille
-          //app.createGridAlt(gridSize, pixelSize);
           app.createGrid(gridSize, pixelSize);
         }
       },
