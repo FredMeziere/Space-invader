@@ -3,7 +3,7 @@ const app = {
     defaultGridSize: 16,
     defaultPixelSize: 20,
     selectedColor: 'white',
-    styles: [
+    colorchoice: [
       'white',
       'black',
       'yellow',
@@ -67,7 +67,7 @@ const app = {
           const pixel = event.target;
 
           // on supprime les classes des couleurs déjà présentes
-          app.styles.forEach(function(style){
+          app.colorchoice.forEach(function(style){
             pixel.classList.remove('pixel--' + style);
           });
 
@@ -133,7 +133,7 @@ const app = {
     
         // Boucle forEach
         // on crée un élèment pour chaque couleur
-        app.styles.forEach(function(style){
+        app.colorchoice.forEach(function(style){
           const colorElem = document.createElement('div');
           // on lui ajoute une classe correspondant à la couleur
           colorElem.classList.add(style);
